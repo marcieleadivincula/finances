@@ -127,5 +127,6 @@ object frmPrincipal: TfrmPrincipal
     Size.PlatformDefault = False
     TabOrder = 7
     Text = 'Novo'
+    OnClick = btnNovoClick
   end
 end
