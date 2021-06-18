@@ -3,12 +3,14 @@ program prFinances;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  unit_principal in 'unit_principal.pas' {Form1};
+  Unit_Principal in 'Unit_Principal.pas' {frmPrincipal},
+  Unit_Transacao in 'Unit_Transacao.pas' {frmTrancacao};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TfrmTrancacao, frmTrancacao);
   Application.Run;
 end.

@@ -1,4 +1,4 @@
-unit unit_principal;
+unit Unit_Principal;
 
 interface
 
@@ -9,7 +9,7 @@ uses
   FMX.ScrollBox, FMX.Grid;
 
 type
-  TForm1 = class(TForm)
+  TfrmPrincipal = class(TForm)
     lbEntradas: TLabel;
     Label1: TLabel;
     Label2: TLabel;
@@ -28,7 +28,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  frmPrincipal: TfrmPrincipal;
 
 implementation
 
