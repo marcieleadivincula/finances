@@ -18,6 +18,7 @@ object frmTrancacao: TfrmTrancacao
     Position.Y = 312.000000000000000000
     TabOrder = 0
     Text = 'Salvar'
+    OnClick = btnSalvarClick
   end
   object dtData: TDateEdit
     Date = 44365.000000000000000000

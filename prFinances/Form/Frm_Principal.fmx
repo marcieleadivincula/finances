@@ -1,7 +1,6 @@
 object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
-  Caption = 'Form1'
   ClientHeight = 480
   ClientWidth = 640
   FormFactor.Width = 320
@@ -105,17 +104,17 @@ object frmPrincipal: TfrmPrincipal
     Options = [ColumnResize, ColumnMove, ColLines, RowLines, RowSelect, AlwaysShowSelection, Tabs, Header, HeaderClick, AutoDisplacement]
     Viewport.Width = 621.000000000000000000
     Viewport.Height = 240.000000000000000000
-    object StringColumn1: TStringColumn
-      Header = 'Descri'#231#227'o'
-      Size.Width = 289.000000000000000000
-    end
-    object CurrencyColumn1: TCurrencyColumn
+    object clValor: TCurrencyColumn
       Header = 'Valor'
-      Size.Width = 159.000000000000000000
+      Size.Width = 129.000000000000000000
     end
-    object DateColumn1: TDateColumn
+    object clData: TDateColumn
       Header = 'Data'
-      Size.Width = 151.000000000000000000
+      Size.Width = 143.000000000000000000
+    end
+    object clDescricao: TStringColumn
+      Header = 'Descri'#231#227'o'
+      Size.Width = 343.000000000000000000
     end
   end
   object btnNovo: TButton

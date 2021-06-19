@@ -91,12 +91,17 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="Unit_Principal.pas">
+        <DCCReference Include="Form\Frm_Principal.pas">
             <Form>frmPrincipal</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="Unit_Transacao.pas">
+        <DCCReference Include="Classes\Unit_Transacao.pas"/>
+        <DCCReference Include="Form\Frm_Transacao.pas">
             <Form>frmTrancacao</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="Classes\Unit_Dados.pas">
+            <Form>dm_dados</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
