@@ -3,6 +3,7 @@ object frmTrancacao: TfrmTrancacao
   Top = 0
   ClientHeight = 476
   ClientWidth = 640
+  Position = ScreenCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
