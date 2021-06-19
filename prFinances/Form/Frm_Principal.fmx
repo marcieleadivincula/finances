@@ -1,8 +1,8 @@
 object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
-  ClientHeight = 480
-  ClientWidth = 640
+  ClientHeight = 505
+  ClientWidth = 638
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -97,24 +97,28 @@ object frmPrincipal: TfrmPrincipal
     Position.X = 8.000000000000000000
     Position.Y = 192.000000000000000000
     Size.Width = 625.000000000000000000
-    Size.Height = 265.000000000000000000
+    Size.Height = 305.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 6
-    RowCount = 0
+    RowCount = 1
     Options = [ColumnResize, ColumnMove, ColLines, RowLines, RowSelect, AlwaysShowSelection, Tabs, Header, HeaderClick, AutoDisplacement]
+    OnCellClick = StringGrid1CellClick
     Viewport.Width = 621.000000000000000000
-    Viewport.Height = 240.000000000000000000
+    Viewport.Height = 280.000000000000000000
+    object IntegerColumn1: TIntegerColumn
+      Header = 'C'#243'digo'
+    end
     object clValor: TCurrencyColumn
       Header = 'Valor'
-      Size.Width = 129.000000000000000000
+      Size.Width = 148.000000000000000000
     end
     object clData: TDateColumn
       Header = 'Data'
-      Size.Width = 143.000000000000000000
+      Size.Width = 146.000000000000000000
     end
     object clDescricao: TStringColumn
       Header = 'Descri'#231#227'o'
-      Size.Width = 343.000000000000000000
+      Size.Width = 220.000000000000000000
     end
   end
   object btnNovo: TButton
