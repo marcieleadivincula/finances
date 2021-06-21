@@ -3,6 +3,7 @@ object frmPrincipal: TfrmPrincipal
   Top = 0
   ClientHeight = 505
   ClientWidth = 638
+  Position = ScreenCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
