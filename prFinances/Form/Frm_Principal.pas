@@ -26,6 +26,7 @@ type
     procedure gridCellClick(const Column: TColumn; const Row: Integer);
     procedure FormCreate(Sender: TObject);
     procedure PopulateGrid;
+    procedure TotalizerValues;
   private
     { Private declarations }
   public
@@ -85,6 +86,38 @@ begin
          grid.Cells[2,l-1] :=  DateToStr(transacoes.Items[l-1].getData);
          grid.Cells[3,l-1] :=  transacoes.Items[l-1].getDescricao;
        end;
+
+       TotalizerValues;
+end;
+
+procedure TfrmPrincipal.TotalizerValues;
+var
+value :string;
+entrada, saida, total : real;
+i: integer;
+begin
+
+  entrada := 0;
+  saida := 0;
+  total := 0;
+
+   if grid.RowCount > 0 then
+   begin
+      for I := 1 to grid.RowCount do
+        begin
+
+          value := grid.Cells[1, i-1];
+          if value.Contains('-') then
+             saida := saida + StrToFloat(value)
+          else
+            entrada := entrada + StrToFloat(value);
+        end;
+   end;
+
+   total := entrada + saida;
+   lbEntradas.Text := FloatToStr(entrada);
+   lbSaidas.Text := FloatToStr(saida);
+   lbTotal.Text := FloatToStr(total);
 end;
 
 end.
