@@ -73,10 +73,10 @@ begin
   if not(validateFields) then
       exit;
 
-  if currentRegister = nil then
-     inserirTransacao
+  if not(currentRegister = nil) and (currentRegister.getCodigo <> 0)then
+     atualizarTransacao
   else
-    atualizarTransacao;
+    inserirTransacao;
 
 end;
 
@@ -128,6 +128,12 @@ begin
     txtValor.Text := FloatToStr(currentRegister.getValor);
     dtData.Date := currentRegister.getData;
     txtDescricao.Text := currentRegister.getDescricao;
+  end
+  else
+  begin
+    lblCodigo.Text := '0';
+    txtValor.Text := '';
+    txtDescricao.Text := '';
   end;
 end;
 

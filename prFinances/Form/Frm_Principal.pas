@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.Controls.Presentation, FMX.StdCtrls, System.Rtti, FMX.Grid.Style,
-  FMX.ScrollBox, FMX.Grid, frm_transacao, Unit_Transacao;
+  FMX.ScrollBox, FMX.Grid, frm_transacao, Unit_Transacao, System.Generics.Collections;
 
 type
   TfrmPrincipal = class(TForm)
@@ -16,14 +16,16 @@ type
     Label3: TLabel;
     lbSaidas: TLabel;
     lbTotal: TLabel;
-    StringGrid1: TStringGrid;
+    grid: TStringGrid;
     btnNovo: TButton;
     clValor: TCurrencyColumn;
     clData: TDateColumn;
     clDescricao: TStringColumn;
     IntegerColumn1: TIntegerColumn;
     procedure btnNovoClick(Sender: TObject);
-    procedure StringGrid1CellClick(const Column: TColumn; const Row: Integer);
+    procedure gridCellClick(const Column: TColumn; const Row: Integer);
+    procedure FormCreate(Sender: TObject);
+    procedure PopulateGrid;
   private
     { Private declarations }
   public
@@ -44,20 +46,45 @@ begin
   if frmTrancacao = nil then
     frmTrancacao := frmTrancacao.Create(self);
 
-  frmTrancacao.Show;
+  frmTrancacao.setCurrentRegister(nil);
+  frmTrancacao.ShowModal;
+  PopulateGrid;
 end;
 
-procedure TfrmPrincipal.StringGrid1CellClick(const Column: TColumn;
+procedure TfrmPrincipal.FormCreate(Sender: TObject);
+begin
+    PopulateGrid;
+end;
+
+procedure TfrmPrincipal.gridCellClick(const Column: TColumn;
   const Row: Integer);
 begin
-    {
-                                           Exemplo de como abrir formulario preenchido com dados do registro
+
   currentRegister := TObj_Transacao.Create;
-  currentRegister.setCodigo(PASSAR ID DA LINHA CLICADA);
+  currentRegister.setCodigo(StrToInt(grid.Cells[0, row]));
   currentRegister.select;
   frmTrancacao.setCurrentRegister(currentRegister);
-  }
+  frmTrancacao.ShowModal;
+  PopulateGrid;
 
+end;
+
+procedure TfrmPrincipal.PopulateGrid;
+var
+transacoes: TObjectList<TObj_Transacao>;
+transacao:  TObj_Transacao;
+l : integer;
+begin
+    transacoes := transacao.getAll;
+    grid.RowCount := transacoes.Count;
+
+    for l := 1 to transacoes.Count do
+       begin
+         grid.Cells[0,l-1] :=  IntToStr(transacoes.Items[l-1].getCodigo);
+         grid.Cells[1,l-1] :=  FloatToStr(transacoes.Items[l-1].getValor);
+         grid.Cells[2,l-1] :=  DateToStr(transacoes.Items[l-1].getData);
+         grid.Cells[3,l-1] :=  transacoes.Items[l-1].getDescricao;
+       end;
 end;
 
 end.

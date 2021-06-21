@@ -3,7 +3,7 @@ unit Unit_Transacao;
 interface
 
 uses
-    unit_dados, FireDAC.Comp.Client, System.SysUtils, Vcl.Dialogs, Vcl.StdCtrls;
+    unit_dados, FireDAC.Comp.Client, System.SysUtils, Vcl.Dialogs, Vcl.StdCtrls, System.Generics.Collections;
 
 type
     TObj_Transacao = class
@@ -30,12 +30,54 @@ type
             function delete:boolean;
             function select:boolean;
             function getUltimoCodigoInserido:integer;
+            function getAll: TObjectList<TObj_Transacao>;
     end;
 
 implementation
 
 { TObj_Transacao }
 
+
+function TObj_Transacao.getAll: TObjectList<TObj_Transacao>;
+var
+   qrSelect:TFDQuery;
+   transacao: TObj_Transacao;
+   list: TObjectList<TObj_Transacao>;
+begin
+    list := TObjectList<TObj_Transacao>.Create;
+    qrSelect := TFDQuery.Create(nil);
+    if dm_Dados = nil then
+        dm_dados := Tdm_dados.Create(nil);
+     qrSelect.Connection := dm_Dados.fdTransacao;
+     qrSelect.SQL.Clear;
+     qrSelect.SQL.Add('select * from transacao order by codigo desc');
+
+     try
+        qrSelect.open;
+        if (not qrSelect.IsEmpty) then
+        begin
+            qrSelect.First;
+            while (not qrSelect.Eof) do
+            begin
+                transacao := TObj_Transacao.Create;
+                transacao.setCodigo(qrSelect.Fields[0].AsInteger);
+                transacao.setValor(qrSelect.Fields[1].AsFloat);
+                transacao.setData(qrSelect.Fields[2].AsDateTime);
+                transacao.setDescricao(qrSelect.Fields[3].AsString);
+
+                list.Add(transacao);
+                qrSelect.Next;
+            end;
+        end;
+
+     except
+           on e:Exception do
+              ShowMessage('Erro ao buscar dados: ' + e.ToString);
+     end;
+
+     qrSelect.Free;
+     result := list;
+end;
 
 procedure TObj_Transacao.insert;
 var
