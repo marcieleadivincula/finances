@@ -1,7 +1,7 @@
 object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
-  ClientHeight = 505
+  ClientHeight = 552
   ClientWidth = 638
   Position = ScreenCenter
   FormFactor.Width = 320
@@ -130,8 +130,19 @@ object frmPrincipal: TfrmPrincipal
     Size.Width = 625.000000000000000000
     Size.Height = 41.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 7
+    TabOrder = 8
     Text = 'Novo'
     OnClick = btnNovoClick
+  end
+  object btnPrint: TButton
+    StyledSettings = [Family, Size, Style, FontColor, Other]
+    Position.X = 5.000000000000000000
+    Position.Y = 504.000000000000000000
+    Size.Width = 625.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    Text = 'Imprimir'
+    OnClick = btnPrintClick
   end
 end
