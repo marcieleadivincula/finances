@@ -6,7 +6,11 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.Controls.Presentation, FMX.StdCtrls, System.Rtti, FMX.Grid.Style,
-  FMX.ScrollBox, FMX.Grid, frm_transacao, Unit_Transacao, System.Generics.Collections;
+  FMX.ScrollBox, FMX.Grid, frm_transacao, Unit_Transacao, System.Generics.Collections,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, FMX.frxClass, FMX.frxDBSet;
 
 type
   TfrmPrincipal = class(TForm)
@@ -22,11 +26,13 @@ type
     clData: TDateColumn;
     clDescricao: TStringColumn;
     IntegerColumn1: TIntegerColumn;
+    btnPrint: TButton;
     procedure btnNovoClick(Sender: TObject);
     procedure gridCellClick(const Column: TColumn; const Row: Integer);
     procedure FormCreate(Sender: TObject);
     procedure PopulateGrid;
     procedure TotalizerValues;
+    procedure btnPrintClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -40,6 +46,8 @@ implementation
 
 {$R *.fmx}
 
+uses Unit_Dados;
+
 procedure TfrmPrincipal.btnNovoClick(Sender: TObject);
 var
 currentRegister: TObj_Transacao;
@@ -50,6 +58,13 @@ begin
   frmTrancacao.setCurrentRegister(nil);
   frmTrancacao.ShowModal;
   PopulateGrid;
+end;
+
+procedure TfrmPrincipal.btnPrintClick(Sender: TObject);
+begin
+     dm_dados.fdQrConsulta.Close();
+     dm_dados.fdQrConsulta.Open();
+     dm_dados.relatorio.ShowReport();
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
