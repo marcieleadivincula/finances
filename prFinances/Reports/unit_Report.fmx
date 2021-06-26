@@ -1,0 +1,34 @@
+object frm_Report: Tfrm_Report
+  Left = 0
+  Top = 0
+  Caption = 'frm_Report'
+  ClientHeight = 375
+  ClientWidth = 576
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object fdQrConsulta: TFDQuery
+    SQL.Strings = (
+      'select * from transacao;')
+    Left = 328
+    Top = 184
+  end
+  object fdTransacao: TFDConnection
+    Params.Strings = (
+      'Database=transacao'
+      'Password=#Almeid@21'
+      'User_Name=root'
+      'Server=127.0.0.1'
+      'DriverID=MySQL')
+    Connected = True
+    Transaction = fdTransactionTransacao
+    Left = 440
+    Top = 192
+  end
+  object fdTransactionTransacao: TFDTransaction
+    Connection = fdTransacao
+    Left = 408
+    Top = 104
+  end
+end
