@@ -9,13 +9,20 @@ uses
   FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
   FireDAC.Phys, FireDAC.Phys.MySQL, FireDAC.Phys.MySQLDef, FireDAC.FMXUI.Wait,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
-  FireDAC.Comp.Client, Data.DB, FireDAC.Comp.DataSet;
+  FireDAC.Comp.Client, Data.DB, FireDAC.Comp.DataSet, FMX.frxClass, FMX.frxDBSet;
 
 type
   Tdm_dados = class(TForm)
     fdTransacao: TFDConnection;
     fdQrTransacao: TFDQuery;
     fdTransactionTransacao: TFDTransaction;
+    relatorio: TfrxReport;
+    frx_transacoes: TfrxDBDataset;
+    fdQrConsulta: TFDQuery;
+    fdQrConsultacodigo: TFDAutoIncField;
+    fdQrConsultavalor: TSingleField;
+    fdQrConsultadata: TDateTimeField;
+    fdQrConsultadescricao: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
   private
