@@ -9,7 +9,8 @@ uses
   FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
   FireDAC.Phys, FireDAC.Phys.MySQL, FireDAC.Phys.MySQLDef, FireDAC.FMXUI.Wait,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
-  FireDAC.Comp.Client, Data.DB, FireDAC.Comp.DataSet, FMX.frxClass, FMX.frxDBSet;
+  FireDAC.Comp.Client, Data.DB, FireDAC.Comp.DataSet, FMX.frxClass, FMX.frxDBSet,
+  FMX.frxPreview;
 
 type
   Tdm_dados = class(TForm)
