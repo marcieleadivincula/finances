@@ -37,7 +37,7 @@ object dm_dados: Tdm_dados
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 44372.891437986100000000
-    ReportOptions.LastChange = 44379.815995960650000000
+    ReportOptions.LastChange = 44379.817916527780000000
     ReportOptions.IsFMXReport = True
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
